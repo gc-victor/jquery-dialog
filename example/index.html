@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>jquery.dialog.js</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style type="text/css" media="screen">
+      /**
+       * jQuery Dialog Plugin
+       */
+      .jquery-dialog-overlay {
+        background:#000;
+        display:hidden;
+        height:100%;
+        left:0;
+        opacity:0.7;
+        position:fixed;
+        top:0;
+        width:100%;
+        z-index: 999;
+        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+      }
+      /**
+       * Just for the example
+       * @see http://css-tricks.com/centering-in-the-unknown/
+       */
+      html, body {
+        height: 100%;
+      }
+      /* This parent can be any width and height */
+      .g-center-outter {
+        height: 100%;
+        text-align: center;
+      }
+      /* The ghost, nudged to maintain perfect centering */
+      .g-center-outter:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -0.25em; /* Adjusts for spacing */
+      }
+      /* The element to be centered, can also be of any width and height */
+      .g-center-element {
+        display: inline-block;
+        vertical-align: middle;
+        width: 700px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Buttons with diferent events -->
+    <div class="g-center-outter">
+      <p class="g-center-element">
+        <button class="js-open btn btn-primary" type="button">Open Dialog</button>
+        <button class="js-repaint btn btn-primary" type="button">Repaint Dialog</button>
+        <button class="js-destroy btn btn-primary" type="button">Destroy Dialog</button>
+        <button class="js-open-other btn btn-primary" type="button">Open Dialog 2</button>
+      </p>
+    </div>
+    <!-- Dialog -->
+    <div class="js-dialog modal hidden">
+      <div class="modal-header">
+        <button type="button" class="js-close close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Dialog header</h3>
+      </div>
+      <div class="modal-body">
+        <p>One fine body…</p>
+        <form>
+          <label for="somewords">
+            The input will be empty after repaint.
+          </label>
+          <p>
+            <input id="somewords" type="text" name="" value="" placeholder="Type some words">
+          </p>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="js-close btn">Close</a>
+        <a href="#" class="js-close btn btn-primary">Save changes</a>
+      </div>
+    </div>
+    <!-- Dialog 2 -->
+    <div class="js-dialog-other modal hidden">
+      <div class="modal-header">
+        <button type="button" class="js-close close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Dialog 2 header</h3>
+      </div>
+      <div class="modal-body">
+        <p>One fine body…</p>
+        <form>
+          <label for="somewords">
+            Type some words
+          </label>
+          <p>
+            <input id="somewords" type="text" name="" value="">
+          </p>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="js-close btn">Close</a>
+        <a href="#" class="js-close btn btn-primary">Save changes</a>
+      </div>
+    </div>
+    <!-- Scripts Required -->
+    <script src="../lib/jquery-1.10.1.min.js"></script>
+    <script src='../jquery.dialog-1.0.0.js'></script>
+    <!-- Example Scripts -->
+    <script>
+      (function () {
+        $(function () {
+
+          // Open
+          $('.js-open').on('click', function () {
+
+             $('.js-dialog').dialog('open', helloDialog);
+          });
+
+          // Repaint
+          $('.js-repaint').on('click', function () {
+
+             $('.js-dialog').dialog('repaint', helloDialog);
+          });
+
+          // Destroy
+          $('.js-destroy').on('click', function () {
+
+             $('.js-dialog').dialog('destroy', bayDialog);
+          });
+
+          // Open Other
+          $('.js-open-other').on('click', function () {
+
+             $('.js-dialog-other').dialog('open', helloDialog);
+          });
+        });
+
+        // Hello Dialog
+        function helloDialog() {
+
+          console.log('Hello jQuery Dialog!!');
+        }
+
+        // Bay Dialog
+        function bayDialog() {
+
+          console.log('Bay, bay jQuery Dialog!!');
+        }
+
+      }());
+    </script>
+  </body>
+</html>
