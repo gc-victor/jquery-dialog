@@ -16,12 +16,15 @@ Include the dialog plugin file after jQuery on your HTML page.
 
 ### Invoke
 
-* Initilize without an object of options:
-```
+Initilize without an object of options:
+
+```javascript
 $('.element').dialog();
 ```
-* Initilize extending the default options:
-```
+
+Initilize extending the default options:
+
+```javascript
 $('.element').dialog({
   close: elementModal.find('.js-close'),
   class: 'jquery-dialog-overlay',
@@ -30,20 +33,28 @@ $('.element').dialog({
   }
 });
 ```
-* Initilize and callback:
-```
+
+Initilize and callback:
+
+```javascript
 $('.element').dialog('open', callback, options);
 ```
-* Close and callback:
-```
+
+Close and callback:
+
+```javascript
 $('.element').dialog('close', callback, options);
 ```
-* Removes the modal element and the overlay and callback:
-```
+
+Removes the modal element and the overlay and callback:
+
+```javascript
 $('.element').dialog('destroy', callback, options);
 ```
-* Initilizes and caches the $(this) object initial state as a string to repain itself after close and a callback:
-```
+
+Initilizes and caches the $(this) object initial state as a string to repain itself after close and a callback:
+
+```javascript
 $('.element').dialog('repaint', callback, options);
 ```
 
